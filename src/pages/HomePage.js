@@ -1,23 +1,26 @@
-import { useRef } from "react";
-
-
+import axios from "axios";
+import  {useEffect, useState} from "react";
 const HomePage = () => {
 
-    let UserName=useRef();
-    let UserPassword=useRef()
+    let[todo,setTodo]=useState([]);
 
-    const SubmitForm=()=>{
-        let a =UserName.current.value;
-        let b=UserPassword.current.value;
-        alert(a);
-        alert(b);
-    }
-    
+  useEffect(()=>{
+
+    axios.get("https://jsonplaceholder.typicode.com/todos")
+    .then((res)=>{
+        setTimeout(()=>{
+          setTodo(res.data)
+        },3000)
+    })
+    .catch((err)=>{
+       
+    })
+
+  },[])
+
     return (
         <div>
-          <input ref={UserName} placeholder="User Name" type="text"/>
-          <input ref={UserPassword} placeholder="User Password" type="text"/>
-          <button onClick={SubmitForm}>submit</button>
+          {JSON.stringify(todo)}
         </div>
     );
 };
