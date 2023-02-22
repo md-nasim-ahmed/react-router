@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import { useRef } from "react";
+
 
 const HomePage = () => {
 
-    const[color,setcolor]=useState("red");
+    let UserName=useRef();
+    let UserPassword=useRef()
 
+    const SubmitForm=()=>{
+        let a =UserName.current.value;
+        let b=UserPassword.current.value;
+        alert(a);
+        alert(b);
+    }
+    
     return (
         <div>
-            <h1>{color}</h1>
+          <input ref={UserName} placeholder="User Name" type="text"/>
+          <input ref={UserPassword} placeholder="User Password" type="text"/>
+          <button onClick={SubmitForm}>submit</button>
         </div>
     );
 };
