@@ -1,28 +1,31 @@
-import axios from "axios";
-import  {useEffect, useState} from "react";
+import { useState } from "react";
+
 const HomePage = () => {
 
-    let[todo,setTodo]=useState([]);
+    let [color,setColor]=useState("red")
 
-  useEffect(()=>{
-
-    axios.get("https://jsonplaceholder.typicode.com/todos")
-    .then((res)=>{
-        setTimeout(()=>{
-          setTodo(res.data)
-        },3000)
-    })
-    .catch((err)=>{
-       
-    })
-
-  },[])
-
-    return (
+    if(color==="blue"){
+      return (
         <div>
-          {JSON.stringify(todo)}
+          <h1 style={{color:'blue'}}>This is blue color</h1>
         </div>
-    );
+    )
+  }
+  else if(color==="red"){
+    return(
+      <div>
+        <h1 style={{color:'red'}}>This is red color</h1>
+      </div>
+    )
+  }
+  else if(color==="green"){
+    return(
+      <div>
+        <h1 style={{color:'green'}}>This is the green color</h1>
+      </div>
+
+    )
+  }
 };
 
 export default HomePage;
