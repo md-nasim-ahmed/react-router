@@ -1,31 +1,53 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const HomePage = () => {
 
-    let [color,setColor]=useState("red")
+    let[todo,setTodo]=useState([]);
 
-    if(color==="blue"){
-      return (
-        <div>
-          <h1 style={{color:'blue'}}>This is blue color</h1>
-        </div>
-    )
-  }
-  else if(color==="red"){
+    useEffect(()=>{
+      
+      axios.get("https://jsonplaceholder.typicode.com/todos")
+      .then((res)=>{
+        setTodo(res.data)
+      })
+      .catch((err)=>{})
+
+    },[])
+
+    const Mylist=todo.map((list,i)=>{
+      return(
+        <tr>
+          <td>{list['userId']}</td>
+          <td>{list['Id']}</td>
+          <td>{list['title']}</td>
+          <td>{list['completed']}</td>
+          <td><button className="btn btn-danger">Delete</button></td>
+          <td><button className="btn btn-info">Edit</button></td>
+          <td><button className="btn btn-primary">Details</button></td>
+        </tr>
+      )
+    })
     return(
       <div>
-        <h1 style={{color:'red'}}>This is red color</h1>
-      </div>
-    )
-  }
-  else if(color==="green"){
-    return(
-      <div>
-        <h1 style={{color:'green'}}>This is the green color</h1>
+          <table className="table table-bordered">
+            <thead>
+                <tr>
+                  <th>User Id</th>
+                  <th>Title</th>
+                  <th>Delete</th>
+                  <th>Edit</th>
+                  <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+              {Mylist}
+            </tbody>
+            </table>
       </div>
 
     )
-  }
+  
 };
 
 export default HomePage;
