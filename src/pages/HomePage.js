@@ -11,7 +11,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-         <HomeBanner title="Welcome" subtitle="Bangladesh"></HomeBanner>
+         <HomeBanner></HomeBanner>
       </div>
     );
   }
