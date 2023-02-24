@@ -5,20 +5,26 @@ class HomeBanner extends Component {
     constructor(){
         super();
       this.state={
-        color:"Red"
+        color:"Blue"
       }
     }
 
     render() {
-        return (
+        if(this.state.color==="Red"){return (
             <div>
-                <h1>{this.state.color}</h1>
-                <button className='btn btn-danger' onClick={()=>this.setState({color:"Red"})}>Red</button>
-                <button className='btn btn-info' onClick={()=>this.setState({color:"Blue"})}>Blue</button>
-                <button className='btn btn-primary' onClick={()=>this.setState({color:"Green"})}>Green</button>
+              <button className='btn btn-danger'>Red</button>
             </div>
-        );
-    }
+        )
+     }
+     else if(this.state.color==="Blue"){
+        return(
+            <div>
+                <button className='btn btn-info'>Blue</button>
+            </div>
+            )
+        
+     }
+  }
 }
 
 export default HomeBanner;
