@@ -15,16 +15,35 @@ const HomePage = () => {
 
     },[])
 
+    const DeleteEvent=(userId)=>{
+      
+      let DeleteId="Delete ID="+userId;
+      alert(DeleteId)
+
+    }
+
+    const EditEvent=(userId)=>{
+      let EditId="Edit ID="+userId;
+      alert(EditId)
+    }
+
+    const DetailsEvent=(userId)=>{
+      let DetailsId="Details ID="+userId;
+      alert(DetailsId)
+    }
+
+
+
+
     const Mylist=todo.map((list,i)=>{
       return(
         <tr>
           <td>{list['userId']}</td>
           <td>{list['Id']}</td>
           <td>{list['title']}</td>
-          <td>{list['completed']}</td>
-          <td><button className="btn btn-danger">Delete</button></td>
-          <td><button className="btn btn-info">Edit</button></td>
-          <td><button className="btn btn-primary">Details</button></td>
+          <td><button onclick={DeleteEvent.bind(this,list['userId'])} className="btn btn-danger">Delete</button></td>
+          <td><button onclick={EditEvent.bind(this,list['userId'])} className="btn btn-info">Edit</button></td>
+          <td><button onclick={DetailsEvent.bind(this,list['userId'])} className="btn btn-primary">Details</button></td>
         </tr>
       )
     })
@@ -33,7 +52,8 @@ const HomePage = () => {
           <table className="table table-bordered">
             <thead>
                 <tr>
-                  <th>User Id</th>
+                  <th>userId</th>
+                  <th>Id</th>
                   <th>Title</th>
                   <th>Delete</th>
                   <th>Edit</th>
