@@ -5,13 +5,13 @@ import HomeBanner from '../components/home/HomeBanner';
 class HomePage extends Component {
 
   constructor() {
-     super();
+    super();
   }
 
   render() {
     return (
       <div>
-         <HomeBanner></HomeBanner>
+         <HomeBanner title="Welcome" subtitle="Bangladesh"></HomeBanner>
       </div>
     );
   }
