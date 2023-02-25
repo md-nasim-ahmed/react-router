@@ -2,29 +2,21 @@ import React, { Component } from 'react';
 
 class HomeBanner extends Component {
 
-    constructor(){
-        super();
-      this.state={
-        color:"Blue"
-      }
+    MyClick=()=>{
+     let text= this.myText.value
+     alert(text)
     }
+  
 
     render() {
-        if(this.state.color==="Red"){return (
+        return (
             <div>
-              <button className='btn btn-danger'>Red</button>
+              <input ref={(abc)=>{this.myText=abc}} className='form-control'></input>
+              <br/>
+              <button className="btn btn-success"onClick={this.MyClick}>submit</button>
             </div>
         )
      }
-     else if(this.state.color==="Blue"){
-        return(
-            <div>
-                <button className='btn btn-info'>Blue</button>
-            </div>
-            )
-        
-     }
-  }
 }
 
 export default HomeBanner;
