@@ -4,17 +4,21 @@ const HomePage = () => {
 
 
  const Getlist=()=>{
-      let URL="..."
-      axios.get(URL).then((res)=>{
-
+      
+    let URl ="....."
+    let postBody={
+       
+      name:"Nasim",
+      city:"Dhaka",
+      age:"25"
+    }
+    axios.post(url,postBody).then((res)=>{
         if(res.status===200){
           let data=res.data
         }
-
         else{
 
         }
-
       }).catch((err)=>{
           console(err)
       })
