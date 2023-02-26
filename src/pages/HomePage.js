@@ -3,16 +3,25 @@ import React from 'react';
 const HomePage = () => {
 
 
- const Getlist=()=>{
-      
+ const fileUpload=()=>{
+    
+    //Post URL
     let URl ="....."
-    let postBody={
-       
-      name:"Nasim",
-      city:"Dhaka",
-      age:"25"
-    }
-    axios.post(url,postBody).then((res)=>{
+    //Body form Data
+    let MyFormData= new FormData();
+       MyFormData.appened(name:"file1",value:"fileobj1");
+       MyFormData.append(name:"file2",value:"fileobj2");
+       MyFormData.append(name:"file3", value:"fileobj3");
+
+       //Header Configuration
+       let HeaderConfig={
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+       }
+
+
+    axios.post(url,MyFormData,HeaderConfig).then((res)=>{
         if(res.status===200){
           let data=res.data
         }
