@@ -1,20 +1,30 @@
-import React, { Component } from 'react';
-import HomeBanner from '../components/home/HomeBanner';
+import React from 'react';
+
+const HomePage = () => {
 
 
-class HomePage extends Component {
+ const Getlist=()=>{
+      let URL="..."
+      axios.get(URL).then((res)=>{
 
-  constructor() {
-    super();
-  }
+        if(res.status===200){
+          let data=res.data
+        }
 
-  render() {
-    return (
-      <div>
-         <HomeBanner></HomeBanner>
-      </div>
-    );
-  }
-}
+        else{
+
+        }
+
+      }).catch((err)=>{
+          console(err)
+      })
+ }
+
+  return (
+    <div>
+      
+    </div>
+  );
+};
 
 export default HomePage;
