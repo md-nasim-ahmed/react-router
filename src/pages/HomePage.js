@@ -21,7 +21,7 @@ const HomePage = () => {
        }
 
 
-    axios.post(url,MyFormData,HeaderConfig).then((res)=>{
+    axios.post(URL,MyFormData,HeaderConfig).then((res)=>{
         if(res.status===200){
           let data=res.data
         }
