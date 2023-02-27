@@ -1,13 +1,24 @@
 import React from 'react';
-
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import exportFromJSON from 'export-from-json'
+// import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 const App = () => {
 
- let HTMLString="<h1>Hello</h1>"
+    const DownloadCsv=()=>{
+          const data=[
+            {name:"Nasim",city:"dhaka"},
+            {name:"Bulbul",city:"narail"}
+          ]
+          
+          const Filename ='myCsv';
+          const exportType=exportFromJSON.types.csv
+
+          exportFromJSON({data,Filename,exportType})
+    }
+
 
   return (
     <div> 
-      {ReactHtmlParser(HTMLString)}
+      <button onClick={DownloadCsv} className='btn btn-danger'>Download CSV</button>
     </div>
   );
 };
