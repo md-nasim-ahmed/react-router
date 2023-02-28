@@ -1,24 +1,19 @@
+import cogoToast from 'cogo-toast';
 import React from 'react';
-import exportFromJSON from 'export-from-json'
+
 // import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 const App = () => {
 
-    const DownloadCsv=()=>{
-          const data=[
-            {name:"Nasim",city:"dhaka"},
-            {name:"Bulbul",city:"narail"}
-          ]
-          
-          const Filename ='myCsv';
-          const exportType=exportFromJSON.types.csv
-
-          exportFromJSON({data,Filename,exportType})
+  const ErrorToast=()=>{
+      cogoToast.error('Error')
+  }
+    const SuccessToast=()=>{
+      cogoToast.success('success')
     }
-
-
   return (
     <div> 
-      <button onClick={DownloadCsv} className='btn btn-danger'>Download CSV</button>
+      <button onClick={ErrorToast} className='btn btn-danger'>Error</button>
+      <button onClick={SuccessToast} className='btn btn-success'>Success</button>
     </div>
   );
 };
