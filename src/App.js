@@ -1,13 +1,20 @@
 import React from 'react';
-import { AiFillGithub, AiFillApple, AiFillAndroid } from "react-icons/ai";
-const App = () => {
+import readXlsxFile from 'read-excel-file'
 
+const App = () => {
+    const Readfile = () => {
+        let myfile = document.getElementById("myfile")
+
+        readXlsxFile(myfile.files[0]).then((data) => {
+            alert(data)
+        })
+
+    }
 
     return (
         <div>
-            <button className="btn m-2 btn-success"><AiFillApple></AiFillApple>Icon</button>
-            <button className="btn m-2 btn-info"> <AiFillGithub></AiFillGithub>Icon</button>
-            <button className="btn m-2 btn-danger"><AiFillAndroid></AiFillAndroid>Icon</button>
+            <input id="myfile" className="m-2 form-control" type="file"></input>
+            <button onClick={Readfile} className="btn m-2 btn-danger">Read excel</button>
         </div>
     );
 };
