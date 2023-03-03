@@ -1,45 +1,42 @@
-import * as htmlToImage from 'html-to-image';
-// import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import React from 'react';
+import localforage from 'localforage';
+import cogoToast from 'cogo-toast';
 
 const App = () => {
 
-    const DownloadImg = () => {
-        let node = document.getElementById('tableList')
-        htmlToImage.toPng(node).then((dataUrl) => {
-            let img = new Image();
-            img.src = dataUrl;
-            document.body.appendChild(img);
-        }).catch((error) => {
-            console.log(error)
+    const setData = () => {
+        localforage.setItem("name", "Bulbul", function (err) {
+            if (err) {
+                cogoToast.error(err)
+            } else {
+                cogoToast.success("Data save success")
+            }
         })
     }
+    const getData = () => {
+        localforage.getItem("name", function (err, value) {
+            if (err) {
+                cogoToast.error(err)
+            } else {
+                alert(value)
+            }
+        })
+    }
+    const removeData = () => {
+        localforage.removeItem("name", function (err) {
+            if (err) {
+                cogoToast.error(err)
+            } else {
+                cogoToast.success("Data remove success")
+            }
+        })
 
-
+    }
     return (
         <div>
-            <div id="tableList" className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <table>
-                            <tr>
-                                <td>Nasim</td>
-                                <td>Dhaka</td>
-                            </tr>
-                            <tr>
-                                <td>BULBUL</td>
-                                <td>Dhaka</td>
-                            </tr>
-                            <tr>
-                                <td>Nasim</td>
-                                <td>Dhaka</td>
-                            </tr>
-
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <button onClick={DownloadImg} className='btn btn-danger m-5'>Download Image</button>
+            <button className="btn m-2 btn-success" onClick={setData}>Set Data</button>
+            <button className="btn m-2 btn-info" onClick={getData}>Get Data</button>
+            <button className="btn m-2 btn-danger" onClick={removeData}>Remove Data</button>
         </div>
     );
 };
